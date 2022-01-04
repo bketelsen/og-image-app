@@ -40,7 +40,7 @@ export default function Post({ post }) {
                 Brian Ketelsen
               </p>
               <p className="text-2xl font-semibold tracking-wide text-primary">
-                brian.dev<span className="path">/blog/{post.slug.current}</span>
+                brian.dev<span className="path">/blog/{post.slug}</span>
               </p>
               <p
                 className="text-2xl font-semibold tracking-wide"
