@@ -1,4 +1,5 @@
 import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api'
+import {imageBuilder} from '@lib/sanity'
 function getFontSize(length) {
     if (length > 32) {
       return `text-7xl`;
@@ -9,12 +10,13 @@ function getFontSize(length) {
 export default function Post({ post }) {
     if (!post) return null;
 
+    const bgImage=imageBuilder(post.coverImage).width(1200).height(630).auto("format").url()
 
   return (
     <>
       <div
         className="relative flex flex-col justify-between p-16 text-base-content bg-base shadow-md"
-        style={{ width: 1200, height: 630 }}
+        style={{ width: 1200, height: 630, backgroundImage: `url(${bgImage})` }}
       >
         <div className="max-w-screen-lg space-y-2">
           {post.publishedAt && readTime && <p className="text-3xl font-semibold text-primary ">
