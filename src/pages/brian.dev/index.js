@@ -13,7 +13,7 @@ const BrianDev = () => {
             brian.dev
           </h1>
           <p className="max-w-screen-md text-4xl font-semibold leading-12">
-            Cloud Developer Advocate
+            Brian Ketelsen
           </p>
         </div>
         <div className="flex justify-between">
