@@ -6,7 +6,9 @@ function getFontSize(length) {
     return `text-9xl`;
   }
 
-export default function Post({ post}) {
+export default function Post({ post }) {
+    if (!post) return null;
+
 
   return (
     <>
