@@ -25,7 +25,7 @@ export default function Post({ post }) {
           <h1
             className={`${getFontSize(
               post.title.length
-            )} font-bold text-primary `}
+            )} font-bold text-primary bg-neutral/60`}
           >
             {post.title}
           </h1>
@@ -38,14 +38,14 @@ export default function Post({ post }) {
               className="flex-none w-32 h-32 border-4 border-base rounded-full handsome"
             />
             <div className="flex flex-col gap">
-              <p className="mb-1 text-3xl font-semibold text-secondary ">
+              <p className="mb-1 text-3xl font-semibold text-secondary bg-neutral/60">
                 Brian Ketelsen
               </p>
-              <p className="text-2xl font-semibold tracking-wide text-primary">
+              <p className="text-2xl font-semibold tracking-wide text-primary bg-neutral/60">
                 brian.dev<span className="path">/blog/{post.slug}</span>
               </p>
               <p
-                className="text-2xl font-semibold tracking-wide"
+                className="text-2xl font-semibold tracking-wide bg-neutral/60"
                 style={{ color: "#1D9BF0" }}
               >
                 twitter.com/bketelsen
