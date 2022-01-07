@@ -24,6 +24,17 @@ const postFields = `
 `
 
 const getClient = (preview) => (preview ? previewClient : client)
+const globalQuery = `'global': *[_type == 'global'][0]{...,author->{...}}`
+const pageQuery = `'page': *[_type == 'page' && slug.current == $slug][0]{...}`
+
+export async function getPage(slug, preview) {
+  const results = await getClient(preview)
+    .fetch(`{${pageQuery}, ${globalQuery}}`,
+      { slug }
+  )
+  return results
+}
+
 
 export async function getPreviewPostBySlug(slug) {
   const data = await getClient(true).fetch(
@@ -38,6 +49,10 @@ export async function getPreviewPostBySlug(slug) {
 
 export async function getAllPostsWithSlug() {
   const data = await client.fetch(`*[_type == "post"]{ 'slug': slug.current }`)
+  return data
+}
+export async function getAllPagesWithSlug() {
+  const data = await client.fetch(`*[_type == "page"]{ 'slug': slug.current }`)
   return data
 }
 
