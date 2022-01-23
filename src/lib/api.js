@@ -19,8 +19,8 @@ const postFields = `
   'date': publishedAt,
   excerpt,
   'slug': slug.current,
-  'coverImage': mainImage.asset->,
-    'author': author->{name, twitter, image},
+  'image': {"caption": image.caption, "alt": image.alt, "asset": image.image.asset->},
+  'author': author->{name, twitter, image},
 `
 
 const getClient = (preview) => (preview ? previewClient : client)

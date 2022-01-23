@@ -8,44 +8,45 @@ function getFontSize(length) {
   }
 
 export default function Post({ post }) {
-    if (!post) return null;
+  if (!post) return null;
+  console.log(post)
 
-    const bgImage=imageBuilder(post.coverImage).width(1200).height(630).auto("format").url()
+    const bgImage=imageBuilder(post.image).width(1200).height(630).auto("format").url()
 
   return (
     <>
       <div
-        className="relative flex flex-col justify-between p-16 text-base-content bg-base shadow-md"
+        className="relative flex flex-col justify-between p-16 shadow-md text-base-content bg-base"
         style={{ width: 1200, height: 630, backgroundImage: `url(${bgImage})` }}
       >
-        <div className="max-w-screen-lg space-y-2">
+        <div className="max-w-screen-lg p-4 space-y-2 bg-gray-300/80">
           {post.publishedAt && readTime && <p className="text-3xl font-semibold text-primary ">
             <span>{date}</span> — <span>{readTime}</span>
           </p>}
           <h1
             className={`${getFontSize(
               post.title.length
-            )} font-bold text-primary bg-neutral/60`}
+            )} font-bold text-indigo-700 `}
           >
             {post.title}
           </h1>
         </div>
         <div className="flex justify-between">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 bg-gray-300/80">
             <img
               src="https://pbs.twimg.com/profile_images/1260333209335795717/9BVgiBM-_400x400.jpg"
               alt="Brian Ketelsen"
-              className="flex-none w-32 h-32 border-4 border-base rounded-full handsome"
+              className="flex-none w-32 h-32 border-4 border-indigo-200 rounded-full handsome"
             />
-            <div className="flex flex-col gap">
-              <p className="mb-1 text-3xl font-semibold text-secondary bg-neutral/60">
+            <div className="flex flex-col p-2 gap ">
+              <p className="mb-1 text-3xl font-semibold text-indigo-700">
                 Brian Ketelsen
               </p>
-              <p className="text-2xl font-semibold tracking-wide text-primary bg-neutral/60">
+              <p className="text-2xl font-semibold tracking-wide text-indigo-700">
                 brian.dev<span className="path">/blog/{post.slug}</span>
               </p>
               <p
-                className="text-2xl font-semibold tracking-wide bg-neutral/60"
+                className="text-2xl font-semibold tracking-wide"
                 style={{ color: "#1D9BF0" }}
               >
                 twitter.com/bketelsen
