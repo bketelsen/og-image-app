@@ -65,7 +65,8 @@ const BrianDev = ({page, global}) => {
 
 export async function getStaticProps({ params, preview = false }) {
   const { slug = "" } = params
-    const data = await getPage("/" + slug, preview)
+  console.log("Slug: ", slug)
+    const data = await getPage( slug, preview)
 
     return {
       props: {
@@ -79,6 +80,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   export async function getStaticPaths() {
     const allPages = await getAllPagesWithSlug()
+    console.log(allPages)
     return {
       paths:
         allPages?.map((page) => ({
