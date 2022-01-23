@@ -9,7 +9,6 @@ function getFontSize(length) {
 
 export default function Post({ post }) {
   if (!post) return null;
-  console.log(post)
 
     const bgImage=imageBuilder(post.image).width(1200).height(630).auto("format").url()
 
