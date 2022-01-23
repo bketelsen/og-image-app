@@ -19,7 +19,7 @@ export default function Post({ post }) {
         style={{ width: 1200, height: 630, backgroundImage: `url(${bgImage})` }}
       >
         <div className="max-w-screen-lg p-4 space-y-2 bg-gray-300/80">
-          { post.estimatedReadingTime && <p className="text-3xl font-semibold text-primary ">
+          { post.estimatedReadingTime && <p className="text-3xl font-semibold text-incigo-500 ">
             <span>{post.estimatedReadingTime} minute read</span>
           </p>}
           <h1
