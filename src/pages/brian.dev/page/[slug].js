@@ -20,7 +20,7 @@ const BrianDev = ({page, global}) => {
   return (
     <>
       <div
-        className="relative flex flex-col justify-between p-16 text-base-content bg-base shadow-md"
+        className="relative flex flex-col justify-between p-16 shadow-md text-base-content bg-base"
         style={{ width: 1200, height: 630 }}
       >
         <div className="max-w-screen-lg space-y-2">
@@ -40,7 +40,7 @@ const BrianDev = ({page, global}) => {
             <img
               src="https://pbs.twimg.com/profile_images/1260333209335795717/9BVgiBM-_400x400.jpg"
               alt="Brian Ketelsen"
-              className="flex-none w-32 h-32 border-4 border-base rounded-full handsome"
+              className="flex-none w-32 h-32 border-4 rounded-full border-base handsome"
             />
             <div className="flex flex-col gap">
               <p className="mb-1 text-3xl font-semibold text-secondary ">
@@ -83,7 +83,7 @@ export async function getStaticProps({ params, preview = false }) {
       paths:
         allPages?.map((page) => ({
           params: {
-            slug: page.slug.substring(1),
+            slug: page.slug,
           },
         })) || [],
       fallback: false,
