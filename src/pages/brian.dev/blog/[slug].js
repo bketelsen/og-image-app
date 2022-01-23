@@ -10,6 +10,7 @@ function getFontSize(length) {
 export default function Post({ post }) {
   if (!post) return null;
 
+  console.log(post.technologies)
     const bgImage=imageBuilder(post.image).width(1200).height(630).auto("format").url()
 
   return (
@@ -51,6 +52,15 @@ export default function Post({ post }) {
                 twitter.com/bketelsen
               </p>
             </div>
+          </div>
+          <div className="flex items-end">
+            {post.technologies.map((tech) => {
+              return (
+                <span className="px-3 h-45 w-45">
+                <img key={tech.slug} height="45" width="45" src={imageBuilder(tech.icon.asset).height(30).width(30).auto("format").url()} />
+                </span>
+              )
+            })}
           </div>
         </div>
       </div>
