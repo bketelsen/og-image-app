@@ -17,6 +17,7 @@ const postFields = `
   name,
   title,
   'date': publishedAt,
+  "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
   excerpt,
   'slug': slug.current,
   'image': {"caption": image.caption, "alt": image.alt, "asset": image.image.asset->},
