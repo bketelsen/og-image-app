@@ -56,7 +56,7 @@ export default function Post({ post }) {
           <div className="flex items-end">
             {post.technologies.map((tech) => {
               return (
-                <span className="px-3 h-45 w-45">
+                <span key={tech.slug} className="px-3 h-45 w-45">
                 <img key={tech.slug} height="45" width="45" src={imageBuilder(tech.icon.asset).height(30).width(30).auto("format").url()} />
                 </span>
               )

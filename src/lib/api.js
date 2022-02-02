@@ -13,6 +13,7 @@ const getUniquePosts = (posts) => {
 }
 
 const postFields = `
+  ...,
   _id,
   name,
   title,
@@ -23,7 +24,6 @@ const postFields = `
   'tags': tags[]->{title,slug,icon},
   'technologies': technologies[]->{title,slug,icon},
   'slug': slug.current,
-  'image': {"caption": image.caption, "alt": image.alt, "asset": image.image.asset->},
   'author': author->{name, twitter, image},
 `
 
