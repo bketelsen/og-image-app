@@ -43,7 +43,7 @@ export default function Post({ post }) {
                 Brian Ketelsen
               </p>
               <p className="text-2xl font-semibold tracking-wide text-indigo-700">
-                brian.dev<span className="path">/blog/{post.slug}</span>
+                brian.dev<span className="path">{post.slug}</span>
               </p>
               <p
                 className="text-2xl font-semibold tracking-wide"
@@ -54,13 +54,6 @@ export default function Post({ post }) {
             </div>
           </div>
           <div className="flex items-end">
-            {post.technologies.map((tech) => {
-              return (
-                <span key={tech.slug} className="px-3 h-45 w-45">
-                <img key={tech.slug} height="45" width="45" src={imageBuilder(tech.icon.asset).height(30).width(30).auto("format").url()} />
-                </span>
-              )
-            })}
           </div>
         </div>
       </div>
@@ -70,8 +63,9 @@ export default function Post({ post }) {
 
 
 export async function getStaticProps({ params, preview = false }) {
-    const data = await getPostAndMorePosts(params.slug, preview)
-    return {
+    const data = await getPostAndMorePosts("/blog/" + params.slug + "/", preview)
+  console.log(data)
+  return {
       props: {
         preview,
         post: data?.post || null,
@@ -83,6 +77,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   export async function getStaticPaths() {
     const allPosts = await getAllPostsWithSlug()
+    console.log(allPosts)
     return {
       paths:
         allPosts?.map((post) => ({

@@ -23,7 +23,7 @@ const postFields = `
   'categories': categories[]->{title,slug,icon},
   'tags': tags[]->{title,slug,icon},
   'technologies': technologies[]->{title,slug,icon},
-  'slug': slug.current,
+  'slug': scopedSlug.current,
   'author': author->{name, twitter, image},
 `
 
@@ -52,7 +52,7 @@ export async function getPreviewPostBySlug(slug) {
 }
 
 export async function getAllPostsWithSlug() {
-  const data = await client.fetch(`*[_type == "post"]{ 'slug': slug.current }`)
+  const data = await client.fetch(`*[_type == "post"]{ 'slug': scopedSlug.current }`)
   return data
 }
 export async function getAllPagesWithSlug() {
@@ -72,7 +72,7 @@ export async function getPostAndMorePosts(slug, preview) {
   const curClient = getClient(preview)
   const [post, morePosts] = await Promise.all([
     curClient.fetch(
-        `*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
+        `*[_type == "post" && scopedSlug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
         body,
         'comments': *[
@@ -90,7 +90,7 @@ export async function getPostAndMorePosts(slug, preview) {
       )
       .then((res) => res?.[0]),
     curClient.fetch(
-      `*[_type == "post" && slug.current != $slug] | order(publishedAt desc, _updatedAt desc){
+      `*[_type == "post" && scopedSlug.current != $slug] | order(publishedAt desc, _updatedAt desc){
         ${postFields}
         body,
       }[0...2]`,
