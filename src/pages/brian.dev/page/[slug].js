@@ -67,7 +67,7 @@ export async function getStaticProps({ params, preview = false }) {
   const { slug = "" } = params
   console.log("Slug: ", slug)
     const data = await getPage( "/" + slug + "/", preview)
-
+  console.log(data)
     return {
       props: {
         preview,
@@ -80,11 +80,12 @@ export async function getStaticProps({ params, preview = false }) {
 
   export async function getStaticPaths() {
     const allPages = await getAllPagesWithSlug()
+    console.log(allPages)
     return {
       paths:
         allPages?.map((page) => ({
           params: {
-            slug: page.slug,
+            slug: page.slug.replace(/\//g, "")
           },
         })) || [],
       fallback: false,
