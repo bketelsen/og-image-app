@@ -66,7 +66,7 @@ const BrianDev = ({page, global}) => {
 export async function getStaticProps({ params, preview = false }) {
   const { slug = "" } = params
   console.log("Slug: ", slug)
-    const data = await getPage( slug, preview)
+    const data = await getPage( "/" + slug + "/", preview)
 
     return {
       props: {
