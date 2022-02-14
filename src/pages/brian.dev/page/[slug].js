@@ -16,6 +16,13 @@ const BrianDev = ({page, global}) => {
 
   console.log(page)
 
+  var slug;
+  if (page.slug.current == "/home/") {
+    slug = "/"
+  } else {
+    slug = page.slug.current
+  }
+
 
   return (
     <>
@@ -47,7 +54,7 @@ const BrianDev = ({page, global}) => {
                 Brian Ketelsen
               </p>
               <p className="text-2xl font-semibold tracking-wide text-primary">
-                brian.dev<span className="path">{page.slug.current}</span>
+                brian.dev<span className="path">{slug}</span>
               </p>
               <p
                 className="text-2xl font-semibold tracking-wide"
