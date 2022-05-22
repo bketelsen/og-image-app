@@ -1,5 +1,5 @@
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api'
-import {imageBuilder} from '@lib/sanity'
+import { getPosts } from "@lib/api";
+
 function getFontSize(length) {
     if (length > 32) {
       return `text-7xl`;
@@ -10,14 +10,12 @@ function getFontSize(length) {
 export default function Post({ post }) {
   if (!post) return null;
 
-  console.log(post.technologies)
-    const bgImage=imageBuilder(post.image).width(1200).height(630).auto("format").url()
 
   return (
     <>
       <div
         className="relative flex flex-col justify-between p-16 shadow-md text-base-content bg-base"
-        style={{ width: 1200, height: 630, backgroundImage: `url(${bgImage})` }}
+        style={{ width: 1200, height: 630, backgroundImage: `url(${post.feature_image})` }}
       >
         <div className="max-w-screen-lg p-4 space-y-2 bg-gray-300/80">
           { post.estimatedReadingTime && <p className="text-3xl font-semibold text-incigo-500 ">
@@ -43,7 +41,7 @@ export default function Post({ post }) {
                 Brian Ketelsen
               </p>
               <p className="text-2xl font-semibold tracking-wide text-indigo-700">
-                brian.dev<span className="path">{post.slug}</span>
+                brian.dev/<span className="path">{post.slug}</span>
               </p>
               <p
                 className="text-2xl font-semibold tracking-wide"
@@ -63,21 +61,21 @@ export default function Post({ post }) {
 
 
 export async function getStaticProps({ params, preview = false }) {
-    const data = await getPostAndMorePosts("/blog/" + params.slug + "/", preview)
-  console.log(data)
-  return {
+  const data = await getPosts()
+  const post = data.find(post => post.slug === params.slug)
+   return {
       props: {
-        preview,
-        post: data?.post || null,
-        morePosts: data?.morePosts || null,
+
+        post: post || null,
+
       },
       revalidate: 1
     }
   }
 
   export async function getStaticPaths() {
-    const allPosts = await getAllPostsWithSlug()
-    console.log(allPosts)
+    const allPosts = await getPosts()
+   // console.log(allPosts)
     return {
       paths:
         allPosts?.map((post) => ({
