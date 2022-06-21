@@ -429,6 +429,13 @@
     "form-data" "^4.0.0"
     "jsonwebtoken" "^8.4.0"
 
+"@tryghost/content-api@^1.11.0":
+  "integrity" "sha512-0JTlp5Ln4BfCJzCYuT2X3MC9ZupIkRtzZaHpf9KZw7O8uOsRnO9RwjItN+lwvkoLIesMzfgrZd/tBJ4BAzeBrg=="
+  "resolved" "https://registry.npmjs.org/@tryghost/content-api/-/content-api-1.11.0.tgz"
+  "version" "1.11.0"
+  dependencies:
+    "axios" "^0.27.0"
+
 "@types/node@*":
   "integrity" "sha512-w3mrvNXLeDYV1GKTZorGJQivK6XLCoGwpnyJFbJVK/aTBQUxOCaa/GlFAAN3OTDFcb7h5tiFG+YXCO2By+riZw=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.5.tgz"

@@ -1,10 +1,10 @@
-import GhostAdminAPI from '@tryghost/admin-api'
-const api = new GhostAdminAPI({
+import GhostContentAPI from '@tryghost/content-api'
+
+const api = new GhostContentAPI({
   url: process.env.GHOST_URL || 'http://localhost:2368',
   key: process.env.GHOST_API_KEY || '',
-  version: "v4"
-});
-
+  version: 'v3',
+})
 export async function getPosts() {
   const allPosts = await api.posts.browse({limit: 'all'});
   return allPosts;
